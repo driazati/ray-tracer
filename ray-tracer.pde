@@ -145,28 +145,12 @@ void interpreter() {
         }
     }
 }
-int xdebug = 0, ydebug = 0;
-void mousePressed() {
-    // println("Mouse X: " + mouseX + " Y: " + mouseY);
-    xdebug = mouseX;
-    ydebug = mouseY;
-    draw_scene();
-}
-
-boolean print;
 
 // This is where you should put your code for creating
 // eye rays and tracing them.
 void draw_scene() {
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
-            if (y == 143 && x == 113) {
-                print = true;
-            } else {
-                print = false;
-            }
-            // scene.x = x;
-            // scene.y = y;
             Ray eyeRay = scene.getRayThroughPixel(x, y);
             Hit closestHit = scene.closestHit(eyeRay);
             color col = scene.shade(closestHit, 0).getColor();
